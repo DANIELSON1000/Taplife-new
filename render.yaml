@@ -1,0 +1,20 @@
+# Optional — Render free tier also works (see render.yaml)
+# Northflank and Cloudflare Tunnel are documented in README.md
+
+services:
+  - type: web
+    name: taplife-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRE
+        value: 7d
